@@ -1,8 +1,13 @@
-//
-// Created by Савва Вовк on 13.03.2026.
-//
+#pragma once
 
-#ifndef UNTITLED23_EFFECT_H
-#define UNTITLED23_EFFECT_H
+#include <variant>
 
-#endif //UNTITLED23_EFFECT_H
+struct BleedingEffect {
+    int damagePerTurn;
+    int duration;
+};
+struct HealingEffect {
+    int healPerTurn;
+    int duration;
+};
+using Effect = std::variant<BleedingEffect, HealingEffect>;

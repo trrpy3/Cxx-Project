@@ -4,7 +4,7 @@
 #include "stuff.h"
 #include "healthpotion.h"
 #include "weapon.h"
-#include "armor.h"
+#include "../items/armor/armor.h"
 #include <vector>
 #include <memory>
 #include <optional>
@@ -34,6 +34,7 @@ public:
     void showEquipment() const;
     void gainExp(int amount);
     int getExp() const { return exp; }
+    int getLevel() const { return expToNextLevel == 0 ? 1 : (exp / expToNextLevel) + 1; }
     int getMoney() const { return money; }
     void spendMoney(int amount) { money -= amount; }
     void addMoney(int amount) { money += amount; }

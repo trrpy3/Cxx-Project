@@ -5,8 +5,8 @@
 #include <optional>
 #include "enums.h"
 #include "stuff.h"
-#include "armour.h"
-#include "weapon.h"
+#include "../items/armor/armor.h"
+#include "../items/weapon/weapon.h"
 #include "effect.h"
 #include "dialogue.h"
 #include "exceptions.h"

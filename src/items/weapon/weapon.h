@@ -1,5 +1,6 @@
 #pragma once
 
+#include "enums.h"
 #include <string>
 
 class Weapon {

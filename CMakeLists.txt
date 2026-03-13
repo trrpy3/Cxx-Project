@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.20)
+set(CMAKE_C_COMPILER "gcc")
+set(CMAKE_CXX_COMPILER "g++")
 project(UndertaleLikeGame)
+
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -56,14 +59,12 @@ set(HEADERS
         ${CMAKE_SOURCE_DIR}/src/core/input.h
         ${CMAKE_SOURCE_DIR}/src/core/exceptions.h
         ${CMAKE_SOURCE_DIR}/src/core/user_interface.h
-        src/items/consumables/stuff.cpp
-        src/items/armour/armor.cpp
-        src/core/cave.h
-        src/core/cave.cpp
+        ${CMAKE_SOURCE_DIR}/src/items/consumables/stuff.cpp
+        ${CMAKE_SOURCE_DIR}/src/items/armour/armor.cpp
 )
 
 add_library(game_lib ${SOURCES} ${HEADERS})
 target_include_directories(game_lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
-add_executable(game main.cpp)
+add_executable(game ${CMAKE_SOURCE_DIR}/src/main.cpp)
 target_link_libraries(game game_lib)

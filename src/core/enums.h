@@ -1,18 +1,5 @@
 #pragma once
 
-#include <string>
-#include "enums.h"
-
-class Weapon {
-public:
-    Weapon(int damage, float accuracy, damage_Type type);
-    virtual ~Weapon() = default;
-    int getDamage() const;
-    float getAccuracy() const;
-    damage_Type getType() const;
-    virtual std::string getTypeName() const = 0;
-protected:
-    int damage;
-    float accuracy;
-    damage_Type type;
-};
+enum class damage_Type { melee, range };
+enum class location_Type { Friendly, Ugly };
+enum class game_State { fight, wait, safe };

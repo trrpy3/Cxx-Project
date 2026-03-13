@@ -3,7 +3,8 @@
 #include <vector>
 #include <memory>
 #include "weapon.h"
-#include "armor.h"
+#include "player.h"
+#include "../items/armor/armor.h"
 #include "healthpotion.h"
 class Shop : public Location {
 public:

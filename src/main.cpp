@@ -12,7 +12,10 @@
 #include "cave.h"
 #include "shop.h"
 #include "weapon.h"
-#include "armor.h"
+#include "sword.h"
+#include "bow.h"
+#include "./items/weapon/morgenstern.h"
+#include "../items/armor/armor.h"
 #include "healthpotion.h"
 #include "exceptions.h"
 

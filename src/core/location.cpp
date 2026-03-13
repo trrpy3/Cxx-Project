@@ -1,4 +1,3 @@
-
 #include "location.h"
 
 Location::Location(const std::string& name, location_Type type, unsigned int required_level)
