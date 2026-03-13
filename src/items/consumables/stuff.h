@@ -4,7 +4,10 @@
 
 class Stuff {
 public:
-    std::string name;
+    Stuff(int cost);
+    virtual ~Stuff() = default;
+    int getCost() const;
+    virtual std::string getType() const = 0;
+protected:
     int cost;
-    int weight;
 };
