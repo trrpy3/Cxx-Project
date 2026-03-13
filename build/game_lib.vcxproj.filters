@@ -13,6 +13,9 @@
     <ClCompile Include="C:\Users\1\CLionProjects\C++project\src\items\consumables\healthpotion.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\1\CLionProjects\C++project\src\items\consumables\effect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\1\CLionProjects\C++project\src\entities\entity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
