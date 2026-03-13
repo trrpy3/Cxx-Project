@@ -1,10 +1,20 @@
 #pragma once
 #include "entity.h"
-
 #include <string>
-
 class Enemy : public Entity {
 public:
-    int level;
-    int rare;
+    Enemy(const std::string& name, int hp, int damage, int defense, int projectile_defense, int level,
+        int expReward, int moneyReward, damage_Type attackType, const std::string& art);
+    std::string getTypeName() const override { return "Enemy"; }
+    int getExpReward() const { return expReward; }
+    int getMoneyReward() const { return moneyReward; }
+    damage_Type getAttackType() const { return attackType; }
+    void render() const;
+    void attack(Entity* target) override;
+private:
+    std::string name;
+    int expReward;
+    int moneyReward;
+    damage_Type attackType;
+    std::string art;
 };
