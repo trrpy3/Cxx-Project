@@ -57,6 +57,7 @@ set(HEADERS
         ${CMAKE_SOURCE_DIR}/src/core/exceptions.h
         ${CMAKE_SOURCE_DIR}/src/core/user_interface.h
         src/items/consumables/stuff.cpp
+        src/items/armour/armor.cpp
 )
 
 add_library(game_lib ${SOURCES} ${HEADERS})
