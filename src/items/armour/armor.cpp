@@ -15,4 +15,4 @@ std::string Helmet::getType() const { return "Helmet"; }
 Chestplate::Chestplate(const std::string& name, int defense, int price, int minLevel)
     : Armor(name, defense, price, minLevel) {
 }
-std::string Chestplate::getType() const { return "Chestplate"; }
+std::string Chestplate::getType() const { return "Chestplate"; }ц
