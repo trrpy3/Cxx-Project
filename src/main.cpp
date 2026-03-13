@@ -2,19 +2,19 @@
 #include <ctime>
 #include <cstdlib>
 #include <memory>
-#include "player.h"
-#include "world.h"
-#include "user_interface.h"
-#include "town.h"
-#include "forest.h"
-#include "swamp.h"
-#include "mountain.h"
-#include "cave.h"
-#include "shop.h"
-#include "weapon.h"
-#include "../items/armor/armor.h"
-#include "healthpotion.h"
-#include "exceptions.h"
+#include "entities/player.h"
+#include "core/world.h"
+#include "core/user_interface.h"
+#include "core/town.h"
+#include "core/forest.h"
+#include "core/swamp.h"
+#include "core/mountain.h"
+#include "core/cave.h"
+#include "core/shop.h"
+#include "items/weapon/weapon.h"
+#include "items/armor/armor.h"
+#include "items/consumables/healthpotion.h"
+#include "core/exceptions.h"
 
 int main() {
 

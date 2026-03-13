@@ -11,6 +11,8 @@
 #include "mountain.h"
 #include "cave.h"
 #include "shop.h"
+#include "../entities/player.h"
+#include "../entities/enemy.h"
 
 class World {
 private:

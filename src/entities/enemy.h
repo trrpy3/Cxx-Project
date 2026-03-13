@@ -1,5 +1,6 @@
 #pragma once
 #include "entity.h"
+#include "../items/consumables/effect.h"
 #include <string>
 class Enemy : public Entity {
 public:

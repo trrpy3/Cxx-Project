@@ -1,7 +1,9 @@
 #pragma once
 #include "location.h"
+#include "../entities/player.h"
+#include "../entities/enemy.h"
 class Town : public Location {
 public:
     Town(const std::string& name);
-    void enter(Player& player);
+    void enter(Player& player) override;
 };

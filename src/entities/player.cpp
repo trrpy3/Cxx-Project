@@ -1,4 +1,5 @@
 #include "player.h"
+#include "../items/consumables/effect.h"
 #include <iostream>
 #include <algorithm>
 #include <cstdlib>

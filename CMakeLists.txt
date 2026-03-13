@@ -12,6 +12,7 @@ set(SOURCES
         ${CMAKE_SOURCE_DIR}/src/items/armor/armor.cpp
         ${CMAKE_SOURCE_DIR}/src/items/consumables/stuff.cpp
         ${CMAKE_SOURCE_DIR}/src/items/consumables/healthpotion.cpp
+        ${CMAKE_SOURCE_DIR}/src/items/consumables/effect.cpp 
         ${CMAKE_SOURCE_DIR}/src/entities/entity.cpp
         ${CMAKE_SOURCE_DIR}/src/entities/player.cpp
         ${CMAKE_SOURCE_DIR}/src/entities/npc.cpp
@@ -53,8 +54,6 @@ set(HEADERS
         ${CMAKE_SOURCE_DIR}/src/core/input.h
         ${CMAKE_SOURCE_DIR}/src/core/exceptions.h
         ${CMAKE_SOURCE_DIR}/src/core/user_interface.h
-        ${CMAKE_SOURCE_DIR}/src/items/consumables/stuff.cpp
-        ${CMAKE_SOURCE_DIR}/src/items/armor/armor.cpp
 )
 
 add_library(game_lib ${SOURCES} ${HEADERS})

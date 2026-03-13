@@ -2,7 +2,7 @@
 #include "world.h"
 #include "input.h"
 #include "save_load.h"
-#include "player.h"
+#include "../entities/player.h"
 #include <exception>
 #include <iostream>
 #include <iomanip>

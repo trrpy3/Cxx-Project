@@ -1,4 +1,5 @@
 #include "enemy.h"
+#include "../items/consumables/effect.h"
 #include <iostream>
 Enemy::Enemy(const std::string& name, int hp, int damage, int defense, int projectile_defense, int level,
     int expReward, int moneyReward, damage_Type attackType, const std::string& art)

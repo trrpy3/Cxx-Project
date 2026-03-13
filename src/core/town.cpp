@@ -1,6 +1,6 @@
 #include "town.h"
 #include "input.h"
-#include "player.h"
+#include "../entities/player.h"
 #include <iostream>
 #include <thread>
 #include <chrono>

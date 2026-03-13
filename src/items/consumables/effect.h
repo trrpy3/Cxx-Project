@@ -1,14 +1,22 @@
 #pragma once
-
-#include "../../core/enums.h"
 #include <variant>
 
+class Entity;
+
 struct BleedingEffect {
-    int damagePerTurn;
+    int damage;
     int duration;
+    
+    void apply(Entity& entity);
+    
 };
+
 struct HealingEffect {
-    int healPerTurn;
+    int amount;
     int duration;
+    
+    void apply(Entity& entity);  
+    
 };
+
 using Effect = std::variant<BleedingEffect, HealingEffect>;

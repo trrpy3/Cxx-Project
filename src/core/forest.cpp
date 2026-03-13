@@ -6,7 +6,7 @@
 #include <chrono>
 #include <cstdlib>
 
-Forest::Forest(const std::string& name) : Location(name) {
+Forest::Forest(const std::string& name) : Location(name, location_Type::Ugly, 1) {
     enemyPool = {
         Enemy("Spider", 40, 5, 2, 1, 1, 10, 10, damage_Type::melee,
             "      /\\      \n     /  \\     \n     |  |     \n     |  |     \n     \\__/     \n    /    \\    \n   /      \\   \n  /        \\  \n /          \\ \n"),

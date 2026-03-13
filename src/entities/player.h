@@ -1,9 +1,10 @@
 #pragma once
 
 #include "entity.h"
-#include "stuff.h"
-#include "healthpotion.h"
-#include "weapon.h"
+#include "../items/consumables/stuff.h"
+#include "../items/consumables/effect.h"
+#include "../items/consumables/healthpotion.h"
+#include "../items/weapon/weapon.h"
 #include "../items/armor/armor.h"
 #include <vector>
 #include <memory>
@@ -39,10 +40,6 @@ public:
     void spendMoney(int amount) { money -= amount; }
     void addMoney(int amount) { money += amount; }
     int getLuck() const { return luck; }
-    void heal(int amount) {
-        hp += amount;
-        if (hp > MAX_HP) hp = MAX_HP;
-    }
     size_t getWeaponCount() const { return weaponInv.size(); }
     size_t getArmorCount() const { return armourInv.size(); }
 private:

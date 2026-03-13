@@ -1,4 +1,5 @@
 #include "entity.h"
+#include "../items/consumables/effect.h"
 #include <iostream>
 #include <cstdlib>
 #include <algorithm>
@@ -28,3 +29,38 @@ void Entity::takeDamage(int amount, damage_Type type) {
     if (hp < 0) hp = 0;
     std::cout << getTypeName() << " took " << damageTaken << " damage, hp now " << hp << std::endl;
 }
+
+void Entity::addEffect(Effect e) {
+    effects.push_back(e);
+}
+
+
+void Entity::applyEffects() {
+    auto it = effects.begin();
+    while (it != effects.end()) {
+        std::visit([this](auto& effect) {
+            effect.apply(*this);
+        }, *it);
+        
+        it = effects.erase(it);
+    }
+}
+
+// void Entity::applyEffects() {
+//     auto it = effects.begin();
+//     while (it != effects.end()) {
+//         std::visit([this](auto& effect) {
+//             effect.apply(*this);
+//         }, *it);
+        
+//         if (std::visit([](auto& effect) { return effect.duration; }, *it) > 0) {
+//             std::visit([](auto& effect) { effect.duration--; }, *it);
+//         }
+        
+//         if (std::visit([](auto& effect) { return effect.duration; }, *it) <= 0) {
+//             it = effects.erase(it);
+//         } else {
+//             ++it;
+//         }
+//     }
+// }

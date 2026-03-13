@@ -5,6 +5,7 @@
 #include <memory>
 #include "enums.h"
 #include "../entities/entity.h"
+#include "../entities/player.h"
 
 class Location {
 public:
@@ -14,12 +15,12 @@ public:
     const std::vector<Location*>& getConnections() const;  
     const std::string& getName() const;
     location_Type getType() const;
-    void enter(Player& player) {};
+    virtual void enter(Player& player);
     unsigned int getRequiredLevel() const;
     std::vector<std::unique_ptr<Entity>>& getPool();
 
 private:
-    const std::string &name;
+    const std::string name;
     location_Type type;
     unsigned int required_level;
     std::vector<std::unique_ptr<Entity>> pool;

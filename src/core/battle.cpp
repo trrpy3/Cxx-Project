@@ -40,7 +40,7 @@ void battle(Player& player, Enemy& enemy, bool& escaped, bool& defeated) {
                 }
                 std::cout << "Press any key to continue...";
                 getChar();
-                clearScreen();
+                ::clearScreen();
                 break;
             }
             
