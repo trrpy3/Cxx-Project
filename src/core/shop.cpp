@@ -3,7 +3,7 @@
 #include <iostream>
 #include <thread>
 
-Shop::Shop(const std::string& name) : Location(name) {}
+Shop::Shop(const std::string& name) : Location(name, location_Type::Friendly, 1) {}
 
 void Shop::addWeapon(std::unique_ptr<Weapon> item) { allWeapons.push_back(std::move(item)); }
 void Shop::addArmor(std::unique_ptr<Armor> item) { allArmors.push_back(std::move(item)); }

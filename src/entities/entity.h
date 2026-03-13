@@ -3,17 +3,17 @@
 #include <vector>
 #include <memory>
 #include <optional>
-#include "enums.h"
+#include "../core/enums.h"
 #include "stuff.h"
 #include "../items/armor/armor.h"
 #include "../items/weapon/weapon.h"
 #include "effect.h"
 #include "dialogue.h"
-#include "exceptions.h"
+#include "../core/exceptions.h"
 
 class Entity {
 public:
-    Entity(int hp, int damage, int defense, int projectile_defense);
+    Entity(int hp, int damage, int defense, int projectile_defense, int level);
     virtual ~Entity() = default;
 
     int getHp() const;
@@ -22,6 +22,7 @@ public:
 
     virtual int getDamage() const;
     virtual int getDefense() const;
+    int getLevel() const { return level; }
     virtual int getProjectileDefense() const;
 
     virtual void attack(Entity* target);
@@ -36,6 +37,7 @@ protected:
     int hp;
     int damage;
     int defense;
+    int level;
     int projectile_defense;
     std::vector<Effect> effects;
 };

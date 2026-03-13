@@ -1,16 +1,17 @@
 #include "town.h"
 #include "input.h"
+#include "player.h"
 #include <iostream>
 #include <thread>
 #include <chrono>
 
-Town::Town(const std::string& name) : Location(name) {}
+Town::Town(const std::string& name) : Location(name, location_Type::Friendly, 1) {}
 
 void Town::enter(Player& player) {
     static auto lastRegen = std::chrono::steady_clock::now();
     
     clearScreen();
-    std::cout << "You are in the safe town of " << name << ".\n";
+    std::cout << "You are in the safe town of " << this->getName() << ".\n";
     
     auto now = std::chrono::steady_clock::now();
     auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(now - lastRegen).count();

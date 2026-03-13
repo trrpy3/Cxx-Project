@@ -12,7 +12,7 @@ public:
     void addWeapon(std::unique_ptr<Weapon> item);
     void addArmor(std::unique_ptr<Armor> item);
     void addPotion(std::unique_ptr<HealthPotion> item);
-    void enter(Player& player) override;
+    void enter(Player& player);
 private:
     std::vector<std::unique_ptr<Weapon>> allWeapons;
     std::vector<std::unique_ptr<Armor>> allArmors;

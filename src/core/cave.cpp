@@ -6,24 +6,25 @@
 #include <chrono>
 #include <cstdlib>
 
-Cave::Cave(const std::string& name) : Location(name) {
-    possibleEnemies.push_back(Enemy("Skeleton Warrior", 100, 25, 10, 5, 10, 100, 100, damage_Type::melee,
-        "        )        \n       /|\\       \n       / \\       \n      /   \\      \n     /     \\     \n    /       \\    \n   /         \\   \n  /           \\  \n"));
-    possibleEnemies.push_back(Enemy("Skeleton Archer", 100, 25, 8, 8, 10, 100, 100, damage_Type::range,
-        "        )        \n       /|\\       \n       / \\       \n      /   \\      \n     /     \\     \n    /       \\    \n   /   ===   \\   \n  /   ===   \\  \n"));
+
+Cave::Cave(const std::string& name) 
+    : Location(name, location_Type::Ugly, 1)  
+{
+    firstVisit = true;
 }
 
 void Cave::startEncounter(Player& player) {
-    int idx = rand() % possibleEnemies.size();
-    Enemy enemy = possibleEnemies[idx];
+    Enemy bat("Bat", 30, 8, 2, 2, 4, 20, 15, damage_Type::melee, "        )        \n       /|\\       \n       / \\       \n      /   \\      \n     /     \\     \n    /       \\    \n   /         \\   \n  /           \\  \n");
     bool escaped = false;
     bool defeated = false;
-    battle(player, enemy, escaped, defeated);
+    battle(player, bat, escaped, defeated);
+    
     if (!player.isAlive()) return;
     if (defeated) {
-        player.gainExp(enemy.getExpReward());
-        player.addMoney(enemy.getMoneyReward());
-        std::cout << "You gained " << enemy.getExpReward() << " exp and " << enemy.getMoneyReward() << " money.\n";
+        player.gainExp(bat.getExpReward());
+        player.addMoney(bat.getMoneyReward());
+        std::cout << "You gained " << bat.getExpReward() 
+                  << " exp and " << bat.getMoneyReward() << " money.\n";
     }
     lastEncounter = std::chrono::steady_clock::now();
 }
@@ -39,9 +40,10 @@ void Cave::enter(Player& player) {
         if (!player.isAlive()) return;
     }
     else {
-        int waitTime = 8 + rand() % 13;
+        int waitTime = 5 + rand() % 10;
         auto waitUntil = std::chrono::steady_clock::now() + std::chrono::seconds(waitTime);
-        std::cout << "You explore the cave.\n";
+        
+        std::cout << "You explore deeper into the cave.\n";
         std::cout << "Your HP: " << player.getHp() << "/100\n";
         std::cout << "Press '1' to return to previous location.\n";
 
@@ -58,7 +60,4 @@ void Cave::enter(Player& player) {
         startEncounter(player);
         if (!player.isAlive()) return;
     }
-
-    std::cout << "You can go back to mountain.\n";
-    std::this_thread::sleep_for(std::chrono::seconds(1));
 }

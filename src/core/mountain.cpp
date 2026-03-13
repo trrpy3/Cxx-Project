@@ -6,7 +6,10 @@
 #include <chrono>
 #include <cstdlib>
 
-Mountain::Mountain(const std::string& name) : Location(name) {}
+Mountain::Mountain(const std::string& name) 
+    : Location(name, location_Type::Ugly, 1) {  
+    firstVisit = true;
+}
 
 void Mountain::startEncounter(Player& player) {
     Enemy troll("Troll", 75, 15, 5, 3, 6, 50, 50, damage_Type::melee,

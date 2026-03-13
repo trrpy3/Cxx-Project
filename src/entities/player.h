@@ -34,7 +34,7 @@ public:
     void showEquipment() const;
     void gainExp(int amount);
     int getExp() const { return exp; }
-    int getLevel() const { return expToNextLevel == 0 ? 1 : (exp / expToNextLevel) + 1; }
+    int getLevel() const { return level; }
     int getMoney() const { return money; }
     void spendMoney(int amount) { money -= amount; }
     void addMoney(int amount) { money += amount; }
@@ -47,6 +47,7 @@ public:
     size_t getArmorCount() const { return armourInv.size(); }
 private:
     int luck;
+    int level;
     int money;
     int exp;
     int expToNextLevel;

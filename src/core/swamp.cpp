@@ -6,7 +6,7 @@
 #include <chrono>
 #include <cstdlib>
 
-Swamp::Swamp(const std::string& name) : Location(name) {}
+Swamp::Swamp(const std::string& name) : Location(name, location_Type::Ugly, 1) {}
 
 void Swamp::startEncounter(Player& player) {
     Enemy kikimora("Kikimora", 50, 10, 3, 2, 3, 20, 20, damage_Type::range,

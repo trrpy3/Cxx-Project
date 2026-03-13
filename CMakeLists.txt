@@ -9,8 +9,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(SOURCES
         ${CMAKE_SOURCE_DIR}/src/items/weapon/weapon.cpp
-        ${CMAKE_SOURCE_DIR}/src/items/weapon/bow.cpp
-        ${CMAKE_SOURCE_DIR}/src/items/weapon/morgenshtern.cpp
         ${CMAKE_SOURCE_DIR}/src/items/armor/armor.cpp
         ${CMAKE_SOURCE_DIR}/src/items/consumables/stuff.cpp
         ${CMAKE_SOURCE_DIR}/src/items/consumables/healthpotion.cpp
@@ -28,7 +26,6 @@ set(SOURCES
         ${CMAKE_SOURCE_DIR}/src/core/shop.cpp
         ${CMAKE_SOURCE_DIR}/src/core/battle.cpp
         ${CMAKE_SOURCE_DIR}/src/core/input.cpp
-        ${CMAKE_SOURCE_DIR}/src/items/consumables/effect.cpp
         ${CMAKE_SOURCE_DIR}/src/core/save_load.cpp
 )
 
@@ -39,10 +36,7 @@ set(HEADERS
         ${CMAKE_SOURCE_DIR}/src/items/consumables/stuff.h
         ${CMAKE_SOURCE_DIR}/src/items/consumables/healthpotion.h
         ${CMAKE_SOURCE_DIR}/src/items/weapon/weapon.h
-        ${CMAKE_SOURCE_DIR}/src/items/armor/armour.h
-        ${CMAKE_SOURCE_DIR}/src/items/weapon/bow.h
-        ${CMAKE_SOURCE_DIR}/src/items/weapon/sword.h
-        ${CMAKE_SOURCE_DIR}/src/items/weapon/morgensteern.h
+        ${CMAKE_SOURCE_DIR}/src/items/armor/armor.h
         ${CMAKE_SOURCE_DIR}/src/entities/entity.h
         ${CMAKE_SOURCE_DIR}/src/entities/player.h
         ${CMAKE_SOURCE_DIR}/src/entities/enemy.h
@@ -60,7 +54,7 @@ set(HEADERS
         ${CMAKE_SOURCE_DIR}/src/core/exceptions.h
         ${CMAKE_SOURCE_DIR}/src/core/user_interface.h
         ${CMAKE_SOURCE_DIR}/src/items/consumables/stuff.cpp
-        ${CMAKE_SOURCE_DIR}/src/items/armour/armor.cpp
+        ${CMAKE_SOURCE_DIR}/src/items/armor/armor.cpp
 )
 
 add_library(game_lib ${SOURCES} ${HEADERS})

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../../core/enums.h"
 #include <variant>
 
 struct BleedingEffect {

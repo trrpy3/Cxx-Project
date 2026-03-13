@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "enums.h"
+#include "../../core/enums.h"
 
 class Weapon {
 public:

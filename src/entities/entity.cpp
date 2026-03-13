@@ -3,8 +3,8 @@
 #include <cstdlib>
 #include <algorithm>
 
-Entity::Entity(int hp, int damage, int defense, int projectile_defense)
-    : hp(hp), damage(damage), defense(defense), projectile_defense(projectile_defense) {
+Entity::Entity(int hp, int damage, int defense, int projectile_defense, int level)
+    : hp(hp), damage(damage), defense(defense), projectile_defense(projectile_defense), level(level) {
 }
 
 int Entity::getHp() const { return hp; }

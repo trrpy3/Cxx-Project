@@ -8,6 +8,14 @@ void Location::addEntity(std::unique_ptr<Entity> entity) {
     pool.push_back(std::move(entity));
 }
 
+void Location::addConnection(Location* location) {
+    connections.push_back(location);
+}
+
+const std::vector<Location*>& Location::getConnections() const {
+    return connections;
+}
+
 const std::string& Location::getName() const { return name; }
 location_Type Location::getType() const { return type; }
 unsigned int Location::getRequiredLevel() const { return required_level; }

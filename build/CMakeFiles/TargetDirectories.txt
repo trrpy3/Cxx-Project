@@ -1,0 +1,4 @@
+C:/Users/1/CLionProjects/C++project/build/CMakeFiles/game_lib.dir
+C:/Users/1/CLionProjects/C++project/build/CMakeFiles/game.dir
+C:/Users/1/CLionProjects/C++project/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/1/CLionProjects/C++project/build/CMakeFiles/ZERO_CHECK.dir
