@@ -1,17 +1,18 @@
 #pragma once
 
-typedef enum location_Type {
-    Frendly, 
-    Ugly
-} location_Type;
+#include <string>
+#include "enums.h"
 
-typedef enum game_State {
-    fight, 
-    wait
-} game_State;
-
-typedef enum fraction {
-    people,
-    goblin,
-    dwarf
-} fraction;
+class Weapon {
+public:
+    Weapon(int damage, float accuracy, damage_Type type);
+    virtual ~Weapon() = default;
+    int getDamage() const;
+    float getAccuracy() const;
+    damage_Type getType() const;
+    virtual std::string getTypeName() const = 0;
+protected:
+    int damage;
+    float accuracy;
+    damage_Type type;
+};

@@ -1,6 +1,6 @@
-#pragma once
 #include "weapon.h"
 
-class Bow : public Weapon {
-    // специфичные поля для лука можно добавить сюда
-};
+Weapon::Weapon(int damage, float accuracy, damage_Type type) : damage(damage), accuracy(accuracy), type(type) {}
+int Weapon::getDamage() const { return damage; }
+float Weapon::getAccuracy() const { return accuracy; }
+damage_Type Weapon::getType() const { return type; }
