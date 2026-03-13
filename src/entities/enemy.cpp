@@ -1,4 +1,3 @@
-// enemy.cpp
 #include "enemy.h"
 #include <iostream>
 Enemy::Enemy(const std::string& name, int hp, int damage, int defense, int projectile_defense, int level,
