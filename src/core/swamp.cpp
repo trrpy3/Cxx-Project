@@ -19,6 +19,8 @@ void Swamp::startEncounter(Player& player) {
         player.gainExp(kikimora.getExpReward());
         player.addMoney(kikimora.getMoneyReward());
         std::cout << "You gained " << kikimora.getExpReward() << " exp and " << kikimora.getMoneyReward() << " money.\n";
+        std::cout << "\nPress any key to continue...";
+        getChar();
     }
     lastEncounter = std::chrono::steady_clock::now();
 }

@@ -6,6 +6,7 @@
 #include <exception>
 #include <iostream>
 #include <iomanip>
+#include <thread>
 
 class UI {
 private:
@@ -48,7 +49,13 @@ public:
         while (running && player.isAlive()) {
             world.update();
             
-            if (!player.isAlive()) break;
+            if (!player.isAlive()) {
+                std::cout << "\nGame Over! Press any key to exit...";
+                getChar();
+                break;
+            }
+        
+            std::this_thread::sleep_for(std::chrono::milliseconds(500));
             
             showLocationMenu();
             

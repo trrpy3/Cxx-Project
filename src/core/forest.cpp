@@ -34,6 +34,8 @@ void Forest::startEncounter(Player& player) {
         player.addMoney(enemy.getMoneyReward());
         std::cout << "You gained " << enemy.getExpReward() << " exp and "
                   << enemy.getMoneyReward() << " money.\n";
+        std::cout << "\nPress any key to continue...";
+        getChar();
     }
 
     lastEncounter = std::chrono::steady_clock::now();

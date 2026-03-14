@@ -2,19 +2,23 @@
 #include "input.h"
 #include <iostream>
 #include <cstdlib>
+#include <thread>
+#include <chrono>
 
 void battle(Player& player, Enemy& enemy, bool& escaped, bool& defeated) {
     escaped = false;
     defeated = false;
+    int dmg;
     
     clearScreen();
-    enemy.render();
-    std::cout << "=== Fight with " << enemy.getTypeName() << " (level " << enemy.getLevel() << ") ===\n";
     
     while (player.isAlive() && enemy.isAlive()) {
         player.applyEffects();
         enemy.applyEffects();
-        
+        std::cout << "=== Fight with " << enemy.getTypeName() << " (level " << enemy.getLevel() << ") ===\n";
+
+        enemy.render();
+
         std::cout << "Your HP: " << player.getHp() << "/" << Player::MAX_HP 
                   << ", Enemy HP: " << enemy.getHp() << "\n";
         std::cout << "1 - Attack, 2 - Use item, 3 - Run: ";
@@ -25,7 +29,11 @@ void battle(Player& player, Enemy& enemy, bool& escaped, bool& defeated) {
         
         switch (choice) {
             case 1:
+                dmg = enemy.getHp();
                 player.attack(&enemy);
+                dmg -= enemy.getHp();
+                std::cout << "You dealt " << dmg << " damage!\n";
+                std::this_thread::sleep_for(std::chrono::milliseconds(200));
                 break;
                 
             case 2: {
@@ -49,9 +57,15 @@ void battle(Player& player, Enemy& enemy, bool& escaped, bool& defeated) {
                 if (std::rand() % 100 < escapeChance) {
                     std::cout << "You fled!\n";
                     escaped = true;
+                    std::cout << "\nPress any key to continue...";
+                    getChar(); 
+                    ::clearScreen();
                     return;
                 } else {
                     std::cout << "Failed to flee!\n";
+                    std::cout << "\nPress any key to continue...";
+                    getChar();
+                    ::clearScreen();
                 }
                 break;
             }
@@ -61,8 +75,15 @@ void battle(Player& player, Enemy& enemy, bool& escaped, bool& defeated) {
         }
         
         if (enemy.isAlive()) {
+            dmg = player.getHp();
             enemy.attack(&player);
+            dmg -= player.getHp();
+            std::cout << "Enemy dealt " << dmg << " damage!\n";
+            std::this_thread::sleep_for(std::chrono::milliseconds(200));
         }
+        std::cout << "Press any key to continue...";
+        getChar();
+        ::clearScreen();
     }
     
     if (!player.isAlive()) {
@@ -71,3 +92,4 @@ void battle(Player& player, Enemy& enemy, bool& escaped, bool& defeated) {
         defeated = true;
     }
 }
+

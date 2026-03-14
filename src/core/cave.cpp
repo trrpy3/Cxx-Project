@@ -25,10 +25,11 @@ void Cave::startEncounter(Player& player) {
         player.addMoney(bat.getMoneyReward());
         std::cout << "You gained " << bat.getExpReward() 
                   << " exp and " << bat.getMoneyReward() << " money.\n";
+        std::cout << "\nPress any key to continue...";
+        getChar();
     }
     lastEncounter = std::chrono::steady_clock::now();
-    std::cout << "\nPress any key to continue...";
-    getChar();
+
 }
 
 void Cave::enter(Player& player) {

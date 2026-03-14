@@ -16,18 +16,28 @@ int Entity::getDamage() const { return damage; }
 int Entity::getDefense() const { return defense; }
 int Entity::getProjectileDefense() const { return projectile_defense; }
 
-void Entity::attack(Entity* target) {
-    if (!target || !isAlive()) return;
-    target->takeDamage(getDamage(), damage_Type::melee);
+int Entity::attack(Entity* target) {
+    if (!target || !isAlive()) return 0;
+    int dmg = target->takeDamage(getDamage(), damage_Type::melee);
+    return dmg;
 }
 
-void Entity::takeDamage(int amount, damage_Type type) {
+int Entity::takeDamage(int amount, damage_Type type) {
+
     int effectiveDefense = (type == damage_Type::melee) ? getDefense() : getProjectileDefense();
-    int damageTaken = amount - effectiveDefense;
+    
+    int damageTaken;
+    if (effectiveDefense > amount) {
+        damageTaken = 0;
+    } else {
+        damageTaken = amount - effectiveDefense;
+    }
+    
     if (damageTaken < 0) damageTaken = 0;
+    
     hp -= damageTaken;
     if (hp < 0) hp = 0;
-    std::cout << getTypeName() << " took " << damageTaken << " damage, hp now " << hp << std::endl;
+    return damageTaken;
 }
 
 void Entity::addEffect(Effect e) {

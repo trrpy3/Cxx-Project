@@ -22,6 +22,8 @@ void Mountain::startEncounter(Player& player) {
         player.gainExp(troll.getExpReward());
         player.addMoney(troll.getMoneyReward());
         std::cout << "You gained " << troll.getExpReward() << " exp and " << troll.getMoneyReward() << " money.\n";
+        std::cout << "\nPress any key to continue...";
+        getChar();
     }
     lastEncounter = std::chrono::steady_clock::now();
 }

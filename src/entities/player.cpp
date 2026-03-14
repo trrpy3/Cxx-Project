@@ -6,13 +6,16 @@
 
 Player::Player(int hp, int damage, int defense, int projectile_defense, int level, int luck, int money)
     : Entity(hp, damage, defense, projectile_defense, level), luck(luck), money(money),
-    exp(0), expToNextLevel(50), activeWeapon(nullptr), activeHelmet(nullptr), activeChestplate(nullptr) {
+    exp(0), expToNextLevel(50), level(level), activeWeapon(nullptr), activeHelmet(nullptr), activeChestplate(nullptr) {
 }
 int Player::getDamage() const {
     int base = 5 + level * 2;
-    if (activeWeapon) base += activeWeapon->getDamage();
-    return base;
+    if (activeWeapon) {
+        base += activeWeapon->getDamage();
+    }
+    return (base > 1000) ? 1000 : base;
 }
+
 int Player::getDefense() const {
     int base = Entity::getDefense() + level;
     if (activeHelmet) base += activeHelmet->getDefense();
@@ -24,18 +27,37 @@ int Player::getProjectileDefense() const {
     if (activeHelmet) base += activeHelmet->getProjectileDefense();
     return base;
 }
-void Player::attack(Entity* target) {
-    if (!target || !isAlive()) return;
+int Player::attack(Entity* target) {
+    if (!target || !isAlive()) return 0;
+    
+    int finalDamage = 0;
     damage_Type type = activeWeapon ? activeWeapon->getType() : damage_Type::melee;
     int dmg = getDamage();
+
+    if (dmg < 0 || dmg > 1000) {
+        std::cerr << "Warning: Invalid damage value " << dmg << ", resetting to 10\n";
+        dmg = 10;
+    }
+    
     float acc = activeWeapon ? activeWeapon->getAccuracy() : 1.0f;
     if ((rand() % 100) < (acc * 100)) {
         int levelDiff = target->getLevel() - getLevel();
         if (levelDiff > 0) {
-            dmg = static_cast<int>(dmg * (1.0f + 0.1f * levelDiff));
+            if (levelDiff > 10) levelDiff = 10;
+            
+            float multiplier = 1.0f + 0.1f * levelDiff;
+            if (dmg > 1000 / multiplier) {
+                dmg = 1000;
+            } else {
+                dmg = static_cast<int>(dmg * multiplier);
+            }
             std::cout << "Enemy is higher level! Damage increased by " << (levelDiff * 10) << "%\n";
         }
-        target->takeDamage(dmg, type);
+        
+        if (dmg < 0) dmg = 0;
+        
+        int finalDamage = target->takeDamage(dmg, type);
+
         if (auto* m = dynamic_cast<Morgenstern*>(activeWeapon)) {
             target->addEffect(BleedingEffect{ m->getBleeding(), 3 });
             std::cout << "Bleeding effect applied!\n";
@@ -44,6 +66,8 @@ void Player::attack(Entity* target) {
     else {
         std::cout << "Attack missed!" << std::endl;
     }
+    
+    return finalDamage;
 }
 void Player::addStuff(std::unique_ptr<Stuff> item) { stuffInv.push_back(std::move(item)); }
 void Player::addWeapon(std::unique_ptr<Weapon> item) { weaponInv.push_back(std::move(item)); }

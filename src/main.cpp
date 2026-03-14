@@ -21,16 +21,16 @@ int main() {
     std::srand(static_cast<unsigned>(std::time(nullptr)));
 
     try {
-        Player player(100, 5, 5, 3, 1, 5, 50);
+        Player player(100, 5, 1, 1, 1, 5, 50);
 
         for (int i = 0; i < 3; ++i) {
             player.addStuff(std::make_unique<HealthPotion>("Small Health Potion", 15, 10));
         }
 
-        auto stick = std::make_unique<Sword>("Stick", 5, 1.0f);
+        auto stick = std::make_unique<Sword>("Stick", 3, 1.0f);
         player.addWeapon(std::move(stick));
 
-        auto woodenChest = std::make_unique<Chestplate>("Wooden Chestplate", 6);
+        auto woodenChest = std::make_unique<Chestplate>("Wooden Chestplate", 1);
         player.addArmor(std::move(woodenChest));
 
         player.equipWeapon(0);

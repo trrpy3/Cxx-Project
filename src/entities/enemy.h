@@ -10,10 +10,13 @@ public:
     int getExpReward() const { return expReward; }
     int getMoneyReward() const { return moneyReward; }
     damage_Type getAttackType() const { return attackType; }
+    int getLevel() const { return level; }
     void render() const;
-    void attack(Entity* target) override;
+    int attack(Entity* target) override;
+    //int takeDamage(int amount, damage_Type type) override;
 private:
     std::string name;
+    int level;
     int expReward;
     int moneyReward;
     damage_Type attackType;

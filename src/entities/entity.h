@@ -28,8 +28,8 @@ public:
     int getLevel() const { return level; }
     virtual int getProjectileDefense() const;
 
-    virtual void attack(Entity* target);
-    virtual void takeDamage(int amount, damage_Type type);
+    virtual int attack(Entity* target);
+    int takeDamage(int amount, damage_Type type);
 
     virtual std::string getTypeName() const = 0; 
 

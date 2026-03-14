@@ -18,7 +18,7 @@ public:
     int getDamage() const override;
     int getDefense() const override;
     int getProjectileDefense() const override;
-    void attack(Entity* target) override;
+    int attack(Entity* target) override;
     std::string getTypeName() const override { return "Player"; }
     void addStuff(std::unique_ptr<Stuff> item);
     void addWeapon(std::unique_ptr<Weapon> item);
